@@ -14,7 +14,7 @@ namespace WebAPI_dapper.Helpers
 
         public IDbConnection CreateConnection()
         {
-            return new SqlConnection(_configuration.GetConnectionString("ConnStr"));
+            return new SqlConnection(_configuration.GetConnectionString("connectionstr"));
         }
 
         public async Task Init()

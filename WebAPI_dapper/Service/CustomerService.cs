@@ -18,12 +18,12 @@ namespace WebAPI_dapper.Service
         public void CustomerCreate(CreateCustRequest custRequest)
         {
             var custExist = _customerRepository.FindByName(custRequest.FirstName);
-            if(custExist != null)
+            if(custExist.Result != null)
             {
                 throw new AppException("Customer Name: '" + custRequest.FirstName + "' Already Exist");
             }
 
-            var customer = _mapper.Map<Customer>(custExist);
+            var customer = _mapper.Map<Customer>(custRequest);
             
             _customerRepository.CustCreate(customer);
         }
